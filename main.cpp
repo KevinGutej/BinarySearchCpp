@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>  // For sorting the array
 
 using namespace std;
 
@@ -23,8 +24,27 @@ int binarySearch(const vector<int>& arr, int x) {
 }
 
 int main() {
-    vector<int> numbers = {10, 20, 30, 40, 50};  // Sorted array of numbers
-    int target = 30;  // The element we are searching for
+    vector<int> numbers;  // Vector to store user input numbers
+    int n, element, target;
+
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;  // Read the size of the array
+
+    cout << "Enter the elements (separated by spaces): ";
+    for (int i = 0; i < n; ++i) {  // Read user input elements
+        cin >> element;
+        numbers.push_back(element);  // Add each element to the vector
+    }
+
+    sort(numbers.begin(), numbers.end());  // Sort the array to ensure binary search works correctly
+    cout << "Sorted Array: ";
+    for (int num : numbers) {  // Print the sorted array
+        cout << num << " ";
+    }
+    cout << endl;
+
+    cout << "Enter the element to search for: ";
+    cin >> target;  // Read the target element to search
 
     int result = binarySearch(numbers, target);  // Call the binary search function
 
