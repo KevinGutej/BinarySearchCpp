@@ -24,16 +24,21 @@ int binarySearch(const vector<int>& arr, int x) {
 }
 
 int main() {
-    vector<int> numbers;  // Vector to store user input numbers
-    int n, element, target;
+    int n, target;
 
     cout << "Enter the number of elements in the array: ";
     cin >> n;  // Read the size of the array
 
+    if (n <= 0) {  // Check for invalid input size
+        cout << "Invalid array size. Please enter a positive number." << endl;
+        return 1;
+    }
+
+    vector<int> numbers(n);  // Pre-allocate vector with the given size
+
     cout << "Enter the elements (separated by spaces): ";
     for (int i = 0; i < n; ++i) {  // Read user input elements
-        cin >> element;
-        numbers.push_back(element);  // Add each element to the vector
+        cin >> numbers[i];
     }
 
     sort(numbers.begin(), numbers.end());  // Sort the array to ensure binary search works correctly
